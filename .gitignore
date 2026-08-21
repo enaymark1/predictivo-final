@@ -1,0 +1,14 @@
+# Datos regenerables por script (82 MB) — ver data/README.md
+data/raw/clima_power/
+data/raw/clima_openmeteo_validacion/
+data/raw/_recursos_encontrados.json
+
+# Se versiona data/processed/dataset_soja_total.csv para que el notebook
+# corra sin necesidad de descargar nada. El resto, no.
+data/processed/*
+!data/processed/dataset_soja_total.csv
+
+__pycache__/
+.ipynb_checkpoints/
+.DS_Store
+.claude/
