@@ -33,11 +33,11 @@ más su anomalía contra la normal del propio departamento.
 | **Descomposición de varianza** | 37% departamento · 23% campaña · **40% interacción** (clima local) |
 | **Baseline** (promedio histórico del depto) | RMSE 665 kg/ha |
 | **Modelo al 10 de febrero** | RMSE 584 kg/ha — **12% mejor** |
-| **En la sequía 2022/23** | de 1012 a 602 kg/ha — **41% mejor** |
-| **En unidades del negocio** | la sobrestimación de producción cae de 15,0 a 7,3 Mt |
+| **En la sequía 2022/23** | de 1012 a 585 kg/ha — **42% mejor** |
+| **En unidades del negocio** | la sobrestimación de producción cae de 15,0 a 6,8 Mt |
 
 **El hallazgo que ordena el trabajo:** el modelo *no* sirve para tarifar antes de
-la siembra (mejora 1,4%, ni el índice ENSO lo cambia — Anexo A). El valor aparece
+la siembra (mejora 1,6%, ni el índice ENSO lo cambia — Anexo A). El valor aparece
 recién con la floración. Es una herramienta de gestión de reservas, no de
 tarifación.
 

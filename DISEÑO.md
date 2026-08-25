@@ -85,12 +85,12 @@ Detalle en `descartados/README.md`.
 tarifara con el modelo.
 
 **Qué pasó:** medido honestamente, un modelo que solo usa barbecho y siembra
-mejora **1,4%** sobre el promedio histórico. En la sequía 2022/23 baja de 1012 a
-955 kg/ha: nada. Es coherente con la agronomía — en diciembre no ocurrió todavía
+mejora **1,6%** sobre el promedio histórico. En la sequía 2022/23 baja de 1012 a
+954 kg/ha: nada. Es coherente con la agronomía — en diciembre no ocurrió todavía
 nada de lo que define el rendimiento.
 
 **Resolución:** la corrida principal se fija al 10 de febrero, cuando cerró la
-floración. Ahí la mejora es 12% general y 41% en sequía. El caso de negocio pasa
+floración. Ahí la mejora es 12% general y 42% en sequía. El caso de negocio pasa
 de tarifación a gestión de reservas.
 
 ### 5.3 El índice ENSO: hipótesis descartada
@@ -102,13 +102,29 @@ panel fueron años Niña.
 **Qué pasó:** la relación existe pero es débil (r = +0,43 entre ONI y efecto-año,
 p = 0,029, ~18% explicado) y tiene contraejemplos que la destruyen: 2010/11 tuvo
 la Niña más intensa del panel con rendimientos normales; 2016/17 fue Niña y
-resultó el segundo mejor año. Con selección de modelo honesta (validación
-2015-19, test tocado una vez) **ENSO no queda seleccionado**. Reformularlo como
-clasificación tampoco funciona: el AUC global de 0,671 se desarma al desagregar
-por campaña (0,25 / 0,39 / 0,59 / 0,58 / 0,26).
+resultó el segundo mejor año. Agregado al modelo de diciembre, **empeora el error
+en test: el RMSE pasa de 655 a 709 kg/ha**. Con 21 campañas de entrenamiento, un
+predictor que toma un valor por año sirve para memorizar años, no para
+generalizar. Reformularlo como clasificación tampoco funciona: el AUC global de
+0,671 se desarma al desagregar por campaña (0,25 / 0,39 / 0,59 / 0,58 / 0,26).
 
 **Resolución:** se documenta como resultado negativo en el Anexo A del notebook.
 La tarifación pre-siembra no se puede mejorar con datos públicos.
+
+### 5.4 El momento de marzo tenía fuga, y corregirlo fortaleció la tesis
+
+**Qué pasó:** la comparación de momentos de decisión (sección 4.2 del notebook)
+entrenaba el momento T3 · 20 de marzo con las ventanas `cosecha` (21 mar – 10
+may) y `ciclo` (oct – abr) incluidas. Las dos son posteriores a su propia fecha
+de corte. El resultado que se reportaba —565 kg/ha, 15% de mejora— no era señal
+sino fuga: la misma clase de error que la sección 2.3 documenta haber evitado en
+el target.
+
+**Resolución:** T3 pasa a usar barbecho, siembra, vegetativo, floración y
+llenado. El error queda al nivel de febrero y en la campaña de sequía empeora.
+La conclusión se vuelve más fuerte, no más débil: no es que marzo *sume poco*, es
+que **después de floración no hay nada más que ganar**. Se agregó un `assert` en
+la celda que impide que cualquier momento incorpore ventanas posteriores al corte.
 
 ---
 
@@ -124,3 +140,7 @@ La tarifación pre-siembra no se puede mejorar con datos públicos.
 - **La normal climática envejece:** el ciclo se calienta ~0,37 °C/década y la
   anomalía media del test corre en +1,26 desvíos. Producción necesita una
   política de recalibración, no solo de reentrenamiento.
+- **El test se evalúa varias veces** —modelo de producción, exploratorio, tres
+  momentos de decisión, ENSO— sin un split de validación intermedio. Los números
+  de la sección 4 son una cota optimista: sirven para afirmar que hay señal, no
+  para elegir un modelo. La validación temporal anidada queda para el final.
