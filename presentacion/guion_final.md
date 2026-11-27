@@ -1,6 +1,6 @@
 # Guion de la presentación final (15 minutos)
 
-Tiempos aproximados entre corchetes. Total ≈ 14 min, con 1 min de margen.
+Tiempos aproximados entre corchetes. Total ≈ 14 min 30 s, con 30 s de margen: si vas justo de tiempo, acortá el slide de features.
 
 ---
 
@@ -14,9 +14,16 @@ Buenas. *(No leer la portada: pasar directo al slide siguiente.)*
 
 ¿Por qué le importa a una aseguradora? Pensemos en una que vende un **seguro indexado por rendimiento zonal**. No hay peritos: el pago se activa cuando el rendimiento oficial del departamento cae debajo de un umbral. O sea que **ese rendimiento es la deuda de la aseguradora**, y tiene que reservar plata antes de saber cuánto se cosechó.
 
-Entonces el objetivo es predecir el rendimiento en kg/ha de cada departamento **el 10 de febrero**. Para esa fecha ya pasaron barbecho, siembra, la etapa vegetativa y la floración.
+Entonces el objetivo es predecir el rendimiento en kg/ha de cada departamento **el 10 de febrero**.
 
 ¿Cuál es el error caro? **Sobreestimar el rinde en una sequía como la de 2022/23**, porque la aseguradora reserva de menos justo el año en que tiene que pagar. Eso lo vamos a mirar todo el tiempo.
+
+### 1 · Contexto: el ciclo de la soja [45 s]
+¿Por qué el 10 de febrero? La soja es el principal cultivo del país: se siembran entre 16 y 18 millones de hectáreas por campaña y, en un año normal, se cosechan entre 44 y 55 millones de toneladas.
+
+El gráfico muestra la campaña de julio a mayo. Al 10 de febrero ya pasaron cuatro etapas: barbecho, siembra, vegetativo y **floración, que es la que define cuántas vainas va a haber**. Gran parte de la campaña ya está jugada, pero todavía faltan unos dos meses para la cosecha: hay tiempo de reservar.
+
+Lo rayado, el llenado de granos y la cosecha, pasa **después** del corte. El modelo no lo usa: sería mirar el futuro. *(Esto se retoma en el slide de la sequía: justo ahí se agravó la de 2022/23.)*
 
 ### 2 · Dataset [1 min]
 El panel lo construí cruzando dos fuentes públicas: el **MAGyP** (rendimiento y superficie sembrada) y **NASA POWER** (clima diario). Son 6.156 observaciones: 255 departamentos y 26 campañas.
