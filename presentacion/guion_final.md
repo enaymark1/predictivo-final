@@ -4,15 +4,19 @@ Tiempos aproximados entre corchetes. Total ≈ 14 min, con 1 min de margen.
 
 ---
 
-### Portada [15 s]
-Buenas. Voy a presentar un modelo que predice el rendimiento de soja de cada departamento al 10 de febrero, para una aseguradora agrícola.
+### Portada [10 s]
+Buenas. *(No leer la portada: pasar directo al slide siguiente.)*
 
-### 1 · Caso de negocio [1 min 15 s]
-El cliente es una aseguradora que vende un **seguro indexado por rendimiento zonal**. No hay peritos: el pago se activa cuando el rendimiento oficial del departamento cae debajo de un umbral. O sea que **ese rendimiento es la deuda de la aseguradora**, y tiene que reservar plata antes de saber cuánto se cosechó.
+### 1 · Caso de negocio [1 min 20 s]
+**Arranco con un número.** En la campaña 2022/23 Argentina cosechó **25 millones de toneladas de soja**. La campaña anterior habían sido 44. **Se perdió casi la mitad.** El rinde cayó de 2.763 a 1.744 kg/ha, y el 10 % de lo que se sembró directamente no se cosechó.
 
-El objetivo es predecir el rendimiento en kg/ha de cada departamento **el 10 de febrero**, dos meses antes de la cosecha. Para esa fecha ya pasaron barbecho, siembra, la etapa vegetativa y la floración.
+*(Pausa.)* Mi pregunta es: **¿una aseguradora lo podría haber anticipado el 10 de febrero, dos meses antes de la cosecha?**
 
-¿Cuál es el error caro? **Sobreestimar el rinde en una sequía**, porque la aseguradora reserva de menos justo el año en que tiene que pagar. Eso lo vamos a mirar todo el tiempo.
+¿Por qué le importa a una aseguradora? Pensemos en una que vende un **seguro indexado por rendimiento zonal**. No hay peritos: el pago se activa cuando el rendimiento oficial del departamento cae debajo de un umbral. O sea que **ese rendimiento es la deuda de la aseguradora**, y tiene que reservar plata antes de saber cuánto se cosechó.
+
+Entonces el objetivo es predecir el rendimiento en kg/ha de cada departamento **el 10 de febrero**. Para esa fecha ya pasaron barbecho, siembra, la etapa vegetativa y la floración.
+
+¿Cuál es el error caro? **Sobreestimar el rinde en una sequía como la de 2022/23**, porque la aseguradora reserva de menos justo el año en que tiene que pagar. Eso lo vamos a mirar todo el tiempo.
 
 ### 2 · Dataset [1 min]
 El panel lo construí cruzando dos fuentes públicas: el **MAGyP** (rendimiento y superficie sembrada) y **NASA POWER** (clima diario). Son 6.156 observaciones: 255 departamentos y 26 campañas.
@@ -71,6 +75,8 @@ No gana todos los años: empata en 2021/22 y pierde en 2024/25. El valor está e
 Comparado con el modelo del Examen 1: es mejor en general (541 contra 584), pero **en la sequía 22/23 es peor** (637 contra 585). Lo digo yo antes de que me lo pregunten.
 
 ### 8 · La sequía 2022/23 [1 min]
+**Vuelvo a la pregunta del principio:** ¿se podía anticipar la sequía 2022/23 el 10 de febrero? La respuesta es: **la mitad sí.**
+
 El error baja de 1.012 a 637. El modelo **vio venir la mitad de la caída**, pero igual **sobreestimó en 3 de cada 4 departamentos**.
 
 ¿Por qué? La sequía **se agravó después del 10 de febrero**: el llenado de granos tuvo la peor anomalía de calor del período (+2,9 desvíos). El modelo no lo puede ver por diseño, porque predice antes.
