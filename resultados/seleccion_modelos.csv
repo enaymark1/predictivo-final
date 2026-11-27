@@ -1,0 +1,53 @@
+seccion,modelo,rmse_cv,mae_cv,sesgo,rmse_2017_sequia,sesgo_sequia,mejora_pct
+7 ensambles,Promedio ElasticNet + CatBoost,510.6,408.8,-50.9,538.3,187.4,21.5
+7 ensambles,Promedio ElasticNet + LightGBM,510.8,409.7,-42.6,561.5,210.8,21.5
+7 ensambles,Promedio ElasticNet + CatBoost + LightGBM,511.6,409.2,-47.8,543.8,183.4,21.4
+7 ensambles,Promedio ElasticNet + CatBoost + XGBoost,513.2,410.7,-47.0,539.3,184.1,21.1
+7 ensambles,Promedio ElasticNet + LightGBM + XGBoost,513.2,410.9,-41.5,554.1,199.7,21.1
+7 ensambles,Promedio ElasticNet + XGBoost,513.4,411.5,-41.5,554.8,211.8,21.1
+7 ensambles,Promedio ElasticNet + CatBoost + LightGBM + XGBoost,513.7,410.9,-45.7,543.3,181.9,21.0
+4 features,Lasso + rezagos,516.9,417.1,-45.3,569.4,234.3,20.5
+6 optuna,ElasticNet ajustado con Optuna,516.9,416.8,-43.7,576.4,246.1,20.5
+5 seleccion,Lasso solo vegetativo + floración,517.3,415.6,-59.8,583.3,246.6,20.5
+4 features,Lasso SOLO anomalías,518.7,418.7,-49.7,569.9,219.2,20.3
+2 target,Lasso relativo (a=0.012),518.7,418.8,-49.9,569.0,218.6,20.3
+4 features,Lasso + provincia (target encoding),518.7,418.8,-49.9,569.0,218.6,20.3
+3 familias,Lasso (a=0.012),518.7,418.8,-49.9,569.0,218.6,20.3
+5 seleccion,Lasso todas las ventanas (referencia),518.7,418.8,-49.9,569.0,218.6,20.3
+3 familias,"ElasticNet (a=0.025, l1=0.5)",518.9,418.5,-49.0,575.0,231.1,20.2
+7 ensambles,Promedio CatBoost + LightGBM,519.5,414.9,-49.8,537.6,152.1,20.2
+5 seleccion,Lasso sin correlacionadas |r|>0.9,519.7,419.2,-43.5,580.2,240.9,20.1
+7 ensambles,Promedio CatBoost + LightGBM + XGBoost,520.4,416.0,-46.3,539.4,160.5,20.0
+6 optuna,CatBoost ajustado con Optuna,520.6,415.3,-58.1,518.7,128.7,20.0
+4 features,Lasso + rezagos + interac + provincia,520.8,420.6,-53.1,565.9,227.2,20.0
+6 optuna,LightGBM ajustado con Optuna,521.7,417.2,-41.6,560.6,175.4,19.8
+7 ensambles,Promedio CatBoost + XGBoost,521.7,417.1,-48.7,531.3,153.1,19.8
+7 ensambles,Promedio LightGBM + XGBoost,521.8,417.3,-40.4,551.6,176.4,19.8
+4 features,Lasso + interacciones,522.5,422.2,-57.7,566.4,212.5,19.7
+4 features,CatBoost + acum + region + rezagos + interac,525.7,416.2,-38.3,504.9,62.0,19.2
+2 target,Lasso residuo sin tendencia (a=20),526.1,425.3,-50.1,605.6,274.5,19.1
+6 optuna,XGBoost ajustado con Optuna,526.5,420.8,-39.3,548.0,177.4,19.1
+3 familias,PCA(20) + Ridge,528.7,428.6,-27.5,519.4,118.4,18.7
+2 target,Lasso crudo (a=20),528.9,428.6,-63.9,590.2,245.2,18.7
+2 target,Lasso desvío vs media depto (a=20),531.8,430.1,-95.7,568.7,200.4,18.3
+3 familias,Ridge (a=3000),533.8,430.0,-71.0,526.5,161.3,18.0
+5 seleccion,Lasso top-20 por permutación,535.4,429.2,-17.4,638.8,375.5,17.7
+3 familias,CatBoost,535.9,427.3,-50.6,522.2,142.2,17.6
+3 familias,PLS (4 componentes),536.3,435.0,-72.0,507.5,87.2,17.6
+3 familias,Random Forest,536.4,431.7,-53.4,629.3,301.7,17.6
+5 seleccion,Lasso solo floración,539.0,431.1,-49.7,608.1,322.0,17.2
+3 familias,LightGBM,542.3,439.2,-59.5,558.3,215.2,16.7
+3 familias,Extra Trees,543.3,436.6,-53.2,659.5,341.5,16.5
+3 familias,XGBoost,546.7,438.2,-46.6,582.4,263.1,16.0
+3 familias,HistGradientBoosting,555.4,451.4,-76.2,625.1,260.4,14.6
+3 familias,Huber robusta (a=1000),562.7,454.0,-100.9,504.2,30.4,13.5
+3 familias,Efectos fijos: Ridge + dummies depto (crudo),564.9,460.6,-117.9,524.4,106.6,13.2
+4 features,Lasso SOLO valores crudos,565.4,449.8,-55.2,656.2,350.4,13.1
+3 familias,SVR (C=0.1),568.1,451.5,-66.2,559.0,180.5,12.7
+1 baselines,Baseline: depto + tendencia,608.5,487.6,-89.0,761.9,478.0,6.5
+3 familias,"KNN (k=25, residuo)",609.2,477.5,-30.5,762.4,384.6,6.4
+3 familias,Regresión lineal sin regularizar,615.8,489.3,-142.5,519.2,-45.7,5.3
+3 familias,"Red neuronal MLP (64-32, residuo)",619.1,482.2,26.4,559.2,-60.3,4.9
+1 baselines,Baseline: media del depto,650.6,530.6,-241.9,605.1,173.3,0.0
+1 baselines,Baseline: campaña anterior,729.2,569.4,-0.7,978.9,746.5,-12.1
+1 baselines,Baseline: promedio general,802.7,638.6,-243.0,669.3,173.2,-23.4

@@ -12,3 +12,6 @@ __pycache__/
 .ipynb_checkpoints/
 .DS_Store
 .claude/
+
+# Carpeta temporal que crea CatBoost
+catboost_info/

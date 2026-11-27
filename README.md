@@ -9,6 +9,29 @@ cobertura por índice de rendimiento zonal.
 📓 **El trabajo está en [`notebooks/01_eda_soja.ipynb`](notebooks/01_eda_soja.ipynb)** —
 caso de negocio, construcción del dataset, análisis exploratorio y conclusiones.
 
+## Final: modelo de producción
+
+| Notebook | Qué hace |
+|---|---|
+| [`02_seleccion_modelos.ipynb`](notebooks/02_seleccion_modelos.ipynb) | Compara baselines, targets, ~20 familias de modelos, features, selección, Optuna y ensambles con validación expansiva 2010–2019 (~8 min) |
+| [`03_entrenar_final.ipynb`](notebooks/03_entrenar_final.ipynb) | Entrena el modelo elegido con 1999/00–2019/20 y lo guarda en `models/modelo_final.joblib` |
+| [`04_aplicar_test.ipynb`](notebooks/04_aplicar_test.ipynb) | Aplica el modelo guardado al test 2020/21–2024/25 (única vez que se toca) |
+
+El código compartido (reglas anti-fuga, validación y modelo) está en [`notebooks/comun.py`](notebooks/comun.py).
+
+**Modelo elegido:** promedio simple de ElasticNet + CatBoost, que predicen el desvío del
+rendimiento **en % del nivel esperado** del departamento (promedio + tendencia), con el clima
+disponible al 10/02.
+
+| RMSE (kg/ha) | Baseline media depto | Modelo final | Mejora |
+|---|---|---|---|
+| Validación 2010–2019 | 651 | 511 | 21,5 % |
+| **Test 2020–2024** | **665** | **541** | **18,6 %** |
+| Test, sequía 2022/23 | 1012 | 637 | 37 % |
+
+En la sequía el modelo anticipa la mitad de la caída pero **sobreestima** el rinde
+(sesgo +372 kg/ha): la sequía se agravó en el llenado de granos, después del 10/02.
+
 ---
 
 ## El dataset
@@ -76,7 +99,13 @@ TP/
 ├── 05_descargar_enso.py          Oceanic Niño Index (Anexo A)
 │
 ├── notebooks/
-│   └── 01_eda_soja.ipynb         ← el trabajo
+│   ├── 01_eda_soja.ipynb         ← el trabajo (EDA)
+│   ├── 02_seleccion_modelos.ipynb
+│   ├── 03_entrenar_final.ipynb
+│   ├── 04_aplicar_test.ipynb
+│   └── comun.py                  código compartido por 02–04
+├── models/                       modelo_final.joblib + ficha .json
+├── resultados/                   métricas, predicciones de test y rondas de validación
 ├── data/                         ver data/README.md
 ├── descartados/                  Open-Meteo: por qué no funcionó
 └── entregables/                  presentación
